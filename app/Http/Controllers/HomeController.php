@@ -66,5 +66,13 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function inspect($id)
+    {
+        $mail = FetchedEmails::find($id);
+        return view('inspect', ['mail' => $mail]);
+    }
+
+
+
 
 }
