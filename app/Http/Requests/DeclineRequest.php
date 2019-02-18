@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddSupporterPersonRequest extends FormRequest
+class DeclineRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,6 @@ class AddSupporterPersonRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'text|required',
             'id' => 'required'
         ];
     }

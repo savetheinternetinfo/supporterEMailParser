@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\FetchedEmails;
 use App\Http\Requests\AddSupporterOrgaRequest;
 use App\Http\Requests\AddSupporterPersonRequest;
+use App\Http\Requests\DeclineRequest;
 use App\Supporters;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,6 +42,9 @@ class HomeController extends Controller
         $request->file('logo')->move($saveLocation, $fileName);
         $url = Storage::url($fileName);
         Supporters::addOrgaSupporter($request->input('name'), $url);
+        FetchedEmails::where('id', $request->input('id'))->update([
+            'status' => FetchedEmails::ACCEPTED_EMAIL,
+        ]);
 
         return redirect()->back();
     }
@@ -48,6 +52,19 @@ class HomeController extends Controller
     public function addSupporterPerson(AddSupporterPersonRequest $request)
     {
         Supporters::addPersonSupporter($request->input('name'));
+        FetchedEmails::where('id', $request->input('id'))->update([
+            'status' => FetchedEmails::ACCEPTED_EMAIL,
+        ]);
         return redirect()->back();
     }
+
+    public function declineSupporter(DeclineRequest $request)
+    {
+        FetchedEmails::where('id', $request->input('id'))->update([
+            'status' => FetchedEmails::DECLINED_EMAIL
+        ]);
+        return redirect()->back();
+    }
+
+
 }

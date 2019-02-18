@@ -13,7 +13,7 @@ class AddSupporterOrgaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,8 @@ class AddSupporterOrgaRequest extends FormRequest
     {
         return [
             'name' => 'text|required',
-            'logo' => 'file|required'
+            'logo' => 'file|required',
+            'id' => 'required'
         ];
     }
 }
