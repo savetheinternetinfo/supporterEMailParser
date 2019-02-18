@@ -14,7 +14,7 @@ class createUser extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'admin:create';
 
     /**
      * The console command description.
@@ -31,16 +31,6 @@ class createUser extends Command
     public function __construct()
     {
         parent::__construct();
-    }
-
-    /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showRegistrationForm()
-    {
-        return abort(404);
     }
 
     /**

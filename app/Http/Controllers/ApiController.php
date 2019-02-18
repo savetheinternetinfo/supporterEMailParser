@@ -10,12 +10,8 @@ class ApiController extends Controller
     public function supporters()
     {
         $supporters = array([
-            'orga' => array(
-                Supporters::getOrgaSupporters()
-            ),
-            'person' => array(
-                Supporters::getPersonSupporters()
-            )
+            'orga' => Supporters::getOrgaSupporters(),
+            'person' => Supporters::getPersonSupporters()
         ]);
         return json_encode($supporters);
     }
