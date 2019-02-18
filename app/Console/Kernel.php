@@ -55,6 +55,7 @@ class Kernel extends ConsoleKernel
                             FetchedEmails::TYPE_ORGA);
                     }
 
+
                 }
             }
 

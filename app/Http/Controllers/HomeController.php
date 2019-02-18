@@ -31,7 +31,7 @@ class HomeController extends Controller
     {
         $data = FetchedEmails::getUnreadOrgaMails();
         $data2 = FetchedEmails::getUnreadPersonMails();
-        return view('home', ['mails' => $data, 'persMails' => $data2]);
+        return view('home', ['mails' => $data2, 'persMails' => $data]);
     }
 
     public function addSupporterOrga(AddSupporterOrgaRequest $request)
