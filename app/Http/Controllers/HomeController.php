@@ -8,6 +8,7 @@ use App\Http\Requests\AddSupporterPersonRequest;
 use App\Supporters;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -35,10 +36,11 @@ class HomeController extends Controller
 
     public function addSupporterOrga(AddSupporterOrgaRequest $request)
     {
-        $saveLocation = storage_path().'/app/';
+        $saveLocation = storage_path().'/app/public';
         $fileName = str_replace(' ', '_', $request->input('name').'_'.Carbon::now());
         $request->file('logo')->move($saveLocation, $fileName);
-        Supporters::addOrgaSupporter($request->input('name'), $saveLocation);
+        $url = Storage::url($fileName);
+        Supporters::addOrgaSupporter($request->input('name'), $url);
 
         return redirect()->back();
     }
