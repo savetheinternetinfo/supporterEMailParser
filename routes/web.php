@@ -22,5 +22,5 @@ Route::get('/mails/inspect/{id}', 'HomeController@inspect')->name('inspect');
 Route::get('api/supporters', 'ApiController@supporters')->name('apiSupp');
 Route::post('/home/addOrga', 'HomeController@addSupporterOrga')->name('addSupporterOrga');
 Route::post('/home/addPers', 'HomeController@addSupporterPerson')->name('addSupporterPerson');
-Route::post('/home/descline', 'HomeController@declineSupporter')->name('declineSupporter');
+Route::post('/home/decline', 'HomeController@declineSupporter')->name('declineSupporter');
 
