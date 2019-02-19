@@ -24,7 +24,7 @@ class AddSupporterPersonRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'text|required',
+            'name' => 'string|required',
             'id' => 'required'
         ];
     }
