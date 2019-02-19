@@ -41,7 +41,7 @@
                                 @if ($mail->type)
                                     <form class="form" action="{{route('addSupporterPerson')}}" method="post">
                                 @else
-                                    <form class="form" action="{{route('addSupporterOrga')}}" method="post">
+                                    <form class="form" action="{{route('addSupporterOrga')}}" method="post" enctype="multipart/form-data">
                                 @endif
                                         <div class="modal-body">
                                             <label for="name">Name:</label>

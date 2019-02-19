@@ -46,7 +46,7 @@ class HomeController extends Controller
             'status' => FetchedEmails::ACCEPTED_EMAIL,
         ]);
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function addSupporterPerson(AddSupporterPersonRequest $request)
@@ -55,7 +55,7 @@ class HomeController extends Controller
         FetchedEmails::where('id', $request->input('id'))->update([
             'status' => FetchedEmails::ACCEPTED_EMAIL,
         ]);
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function declineSupporter(DeclineRequest $request)
@@ -63,7 +63,7 @@ class HomeController extends Controller
         FetchedEmails::where('id', $request->input('id'))->update([
             'status' => FetchedEmails::DECLINED_EMAIL
         ]);
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
     public function inspect($id)
