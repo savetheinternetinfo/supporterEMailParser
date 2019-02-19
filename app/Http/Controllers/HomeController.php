@@ -37,8 +37,9 @@ class HomeController extends Controller
 
     public function addSupporterOrga(AddSupporterOrgaRequest $request)
     {
+        $extension = '.'.$request->file('logo')->getClientOriginalExtension();
         $saveLocation = storage_path().'/app/public';
-        $fileName = str_replace(' ', '_', $request->input('name').'_'.Carbon::now());
+        $fileName = str_replace(' ', '_', $request->input('name').'_'.Carbon::now().$extension);
         $request->file('logo')->move($saveLocation, $fileName);
         $url = Storage::url($fileName);
         Supporters::addOrgaSupporter($request->input('name'), $url);
