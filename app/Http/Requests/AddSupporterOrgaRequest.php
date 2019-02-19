@@ -24,7 +24,7 @@ class AddSupporterOrgaRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'text|required',
+            'name' => 'string|required',
             'logo' => 'file|required',
             'id' => 'required'
         ];
