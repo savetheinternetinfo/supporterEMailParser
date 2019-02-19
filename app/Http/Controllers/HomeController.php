@@ -42,7 +42,7 @@ class HomeController extends Controller
         $fileName = str_replace(' ', '_', $request->input('name').'_'.Carbon::now().'.'.$extension);
         $request->file('logo')->move($saveLocation, $fileName);
         $url = Storage::url($fileName);
-        Supporters::addOrgaSupporter($request->input('name'), $url);
+        Supporters::addOrgaSupporter($request->input('name'), $url, $request->input('id'));
         FetchedEmails::where('id', $request->input('id'))->update([
             'status' => FetchedEmails::ACCEPTED_EMAIL,
         ]);
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
     public function addSupporterPerson(AddSupporterPersonRequest $request)
     {
-        Supporters::addPersonSupporter($request->input('name'));
+        Supporters::addPersonSupporter($request->input('name'), $request->input('id'));
         FetchedEmails::where('id', $request->input('id'))->update([
             'status' => FetchedEmails::ACCEPTED_EMAIL,
         ]);

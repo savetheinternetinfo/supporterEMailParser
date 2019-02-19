@@ -10,20 +10,22 @@ class Supporters extends Model
 
     protected $fillable = ['name', 'logoURL', 'type'];
 
-    public static function addOrgaSupporter(string $name, string $url)
+    public static function addOrgaSupporter(string $name, string $url, int $id)
     {
         return self::create([
             'logoURL' => $url,
             'name' => $name,
-            'type' => FetchedEmails::TYPE_ORGA
+            'type' => FetchedEmails::TYPE_ORGA,
+            'fetchedEmailsId' => $id
         ]);
     }
 
-    public static function addPersonSupporter(string $name)
+    public static function addPersonSupporter(string $name, int $id)
     {
         return self::create([
             'name' => $name,
-            'type' => FetchedEmails::TYPE_PERSON
+            'type' => FetchedEmails::TYPE_PERSON,
+            'fetchedEmailsId' => $id
         ]);
     }
 

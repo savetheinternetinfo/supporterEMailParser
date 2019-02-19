@@ -18,6 +18,7 @@ class CreateSupportersTable extends Migration
             $table->text('logoURL')->nullable();
             $table->text('name')->nullable();
             $table->text('type')->nullable();
+            $table->integer('fetchedEmailsId');
             $table->timestamps();
         });
     }
