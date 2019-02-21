@@ -8,7 +8,7 @@ class Supporters extends Model
 {
     protected $table = 'supporters';
 
-    protected $fillable = ['name', 'logoURL', 'type'];
+    protected $fillable = ['name', 'logoURL', 'type', 'fetchedEmailsId'];
 
     public static function addOrgaSupporter(string $name, string $url, int $id)
     {
