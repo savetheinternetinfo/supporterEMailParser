@@ -29,7 +29,7 @@ $ `php artisan key:generate`
 9. Generate Sqlite Database <br>
 $ `php artisan migrate`
 10. Create Admin Account <br>
-$ `php artisan key:generate`
+$ `php artisan admin:create`
 
 11. Installieren NPM Packets <br>
 $ `npm i`
