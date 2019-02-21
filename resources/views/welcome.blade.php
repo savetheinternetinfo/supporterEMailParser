@@ -82,7 +82,7 @@
 
                 <div class="links">
                     <a href="https://savetheinternet.info">Website</a>
-                    <a href="https://github.com/savetheinternet.info">GitHub</a>
+                    <a href="https://github.com/savetheinternetinfo">GitHub</a>
                 </div>
             </div>
         </div>
