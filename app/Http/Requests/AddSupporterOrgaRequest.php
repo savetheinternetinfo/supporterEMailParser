@@ -26,7 +26,8 @@ class AddSupporterOrgaRequest extends FormRequest
         return [
             'name' => 'string|required',
             'logo' => 'file|required',
-            'id' => 'required'
+            'id' => 'required',
+            'url' => 'required'
         ];
     }
 }

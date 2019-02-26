@@ -8,15 +8,16 @@ class Supporters extends Model
 {
     protected $table = 'supporters';
 
-    protected $fillable = ['name', 'logoURL', 'type', 'fetchedEmailsId'];
+    protected $fillable = ['name', 'logoURL', 'type', 'fetchedEmailsId', 'url'];
 
-    public static function addOrgaSupporter(string $name, string $url, int $id)
+    public static function addOrgaSupporter(string $name, string $urlLogo, int $id, $url)
     {
         return self::create([
-            'logoURL' => $url,
+            'logoURL' => $urlLogo,
             'name' => $name,
             'type' => FetchedEmails::TYPE_ORGA,
-            'fetchedEmailsId' => $id
+            'fetchedEmailsId' => $id,
+            'url' => $url
         ]);
     }
 

@@ -47,6 +47,8 @@
                                             <label for="name">Name:</label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required/>
                                         @if(!$mail->type)
+                                            <label for="url">Url:</label>
+                                            <input type="text" class="form-control" id="url" name="url" placeholder="Enter URL to Orga Website" required/>
                                             <label for="logo" class="mt-3">Upload logo:</label>
                                             <input type="file" class="form-control-file" id="logo" name="logo" accept="image/jpeg,image/gif,image/svg+xml,image/png" required/>
                                         @endif

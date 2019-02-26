@@ -39,10 +39,11 @@ class HomeController extends Controller
     {
         $extension = '.'.$request->file('logo')->getClientOriginalExtension();
         $saveLocation = storage_path().'/app/public';
-        $fileName = str_replace(' ', '_', $request->input('name').'_'.Carbon::now().'.'.$extension);
+        $fileName = str_replace(' ', '_', str_replace('/', '', $request->input('name')).'_'.Carbon::now()->toDateString().$extension);
+        $fileName = str_replace('#', '', $fileName);
         $request->file('logo')->move($saveLocation, $fileName);
         $url = Storage::url($fileName);
-        Supporters::addOrgaSupporter($request->input('name'), $url, $request->input('id'));
+        Supporters::addOrgaSupporter($request->input('name'), $url, $request->input('id'), $request->input('url'));
         FetchedEmails::where('id', $request->input('id'))->update([
             'status' => FetchedEmails::ACCEPTED_EMAIL,
         ]);
