@@ -23,4 +23,5 @@ Route::get('api/supporters', 'ApiController@supporters')->middleware('cors')->na
 Route::post('/home/addOrga', 'HomeController@addSupporterOrga')->name('addSupporterOrga');
 Route::post('/home/addPers', 'HomeController@addSupporterPerson')->name('addSupporterPerson');
 Route::post('/home/decline', 'HomeController@declineSupporter')->name('declineSupporter');
+Route::get('/mails/inspect/{mail_id}/attachment/{attachment_id}', 'HomeController@saveAttachment')->name('saveAttachment');
 

@@ -15,7 +15,17 @@
                     <div class="card-body">
                         <h3>{{$mail->title}}</h3>
                         <p>{{$mail->body}}</p>
-                        
+                        @if($mail->hasAttachments())
+                            <table>
+                                <th>Attachments</th>
+                                <th></th>
+                                @foreach($mail->getAttachments as $attachment)
+                                    <tr>{{$attachment->name}}</tr>
+                                    <tr><a href="{{route('saveAttachment', ['mail_id' => $mail->id, 'attachment_id' => $attachment->id])}}" class="btn btn-primary" >save</a></tr>
+                                @endforeach
+                            </table>
+                        @endif
+
                         <div class="form-inline float-right">
                             <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#acceptModal">Accept</button>
                             

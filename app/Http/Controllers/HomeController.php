@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\EMailAttachments;
 use App\FetchedEmails;
 use App\Http\Requests\AddSupporterOrgaRequest;
 use App\Http\Requests\AddSupporterPersonRequest;
@@ -74,6 +75,14 @@ class HomeController extends Controller
         return view('inspect', ['mail' => $mail]);
     }
 
+    public function saveAttachment($mail_id, $attachment_id)
+    {
+        $attachment = EMailAttachments::find($attachment_id);
+        $path = $attachment->path;
+        $file = $attachment->file_name . "." . $attachment->file_extension;
+        Storage::download($path . "/" . $file);
+        return redirect()->route('inspect', ['id' => $mail_id]);
+    }
 
 
 
