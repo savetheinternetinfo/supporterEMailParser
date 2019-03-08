@@ -19,7 +19,6 @@ Auth::routes();
 
 Route::get('/mails', 'HomeController@index')->name('home');
 Route::get('/mails/inspect/{id}', 'HomeController@inspect')->name('inspect');
-Route::get('api/supporters', 'ApiController@supporters')->middleware('cors')->name('apiSupp');
 Route::post('/home/addOrga', 'HomeController@addSupporterOrga')->name('addSupporterOrga');
 Route::post('/home/addPers', 'HomeController@addSupporterPerson')->name('addSupporterPerson');
 Route::post('/home/decline', 'HomeController@declineSupporter')->name('declineSupporter');

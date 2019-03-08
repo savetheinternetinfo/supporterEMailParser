@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Supporters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class ApiController extends Controller
 {
@@ -13,6 +14,7 @@ class ApiController extends Controller
             'orga' => Supporters::getOrgaSupporters(),
             'person' => Supporters::getPersonSupporters()
         ]);
-        return json_encode($supporters);
+        Response::header('Cache-Control', 'public, must-revalidate, max-age=3600');
+        return response()->json($supporters);
     }
 }
