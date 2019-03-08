@@ -37,4 +37,9 @@ class FetchedEmails extends Model
     {
         return self::where(['status' => self::UNREAD_EMAIL, 'type' => self::TYPE_PERSON])->get();
     }
+
+    public function getAttachments()
+    {
+        return $this->hasMany('App\EMailAttachments');
+    }
 }

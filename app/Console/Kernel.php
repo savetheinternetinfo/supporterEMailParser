@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\EMailAttachments;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Webklex\IMAP\Attachment;
 use Webklex\IMAP\Client;
 use App\FetchedEmails;
 use Webklex\IMAP\Message;
@@ -84,6 +86,7 @@ class Kernel extends ConsoleKernel
                     FetchedEmails::addEmail($senderInfo->personal, $senderInfo->mail,
                         $m->getSubject(), \Soundasleep\Html2Text::convert($m->getHTMLBody(true), ['ignore_errors' => true]),
                         $type);
+                    $this->saveEmailAttachmentsIfPresent($m);
                 }
 
 
@@ -133,6 +136,16 @@ class Kernel extends ConsoleKernel
         return $folders = $client->getFolders('INBOX');
     }
 
-
+    private function saveEmailAttachmentsIfPresent(Message $m)
+    {
+        if ($m->hasAttachments()) {
+            $aAttachment = $m->getAttachments();
+            foreach ($aAttachment as $oAttachment){
+                /** @var \Webklex\IMAP\Attachment $oAttachment */
+                $path = $m->getMessageId();
+                EMailAttachments::addAttachment($oAttachment, $path);
+            }
+        }
+    }
 
 }
