@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('supporters', 'ApiController@supporters')->name('apiSupp');
+Route::get('supporters', 'ApiController@supporters')->middleware('cors')->name('apiSupp');
