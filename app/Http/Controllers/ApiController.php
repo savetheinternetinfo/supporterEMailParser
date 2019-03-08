@@ -14,7 +14,11 @@ class ApiController extends Controller
             'orga' => Supporters::getOrgaSupporters(),
             'person' => Supporters::getPersonSupporters()
         ]);
-        Response::header('Cache-Control', 'public, must-revalidate, max-age=3600');
-        return response()->json($supporters);
+        return response()->json($supporters)
+            ->withHeaders([
+                'Cache-Control' => 'public, must-revalidate, max-age=3600',
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS'
+            ]);
     }
 }
